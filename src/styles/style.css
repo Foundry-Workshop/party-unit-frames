@@ -72,4 +72,16 @@
       font-family: Roboto, Signika, sans-serif;
       text-shadow: 1px 1px 4px #000; }
 
+#unit-frame-box.pill .unit-frame .primary {
+  border-radius: 20px; }
+  #unit-frame-box.pill .unit-frame .primary::before {
+    border-radius: 20px; }
+  #unit-frame-box.pill .unit-frame .primary .bar {
+    border-radius: 20px; }
+    #unit-frame-box.pill .unit-frame .primary .bar::after {
+      border-radius: 20px; }
+#unit-frame-box.pill .unit-frame .secondary {
+  margin: 0 15px;
+  width: 90px; }
+
 /*# sourceMappingURL=style.css.map */

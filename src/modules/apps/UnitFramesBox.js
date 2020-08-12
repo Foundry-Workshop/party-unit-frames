@@ -19,6 +19,7 @@ export default class UnitFramesBox extends Application {
     options.tokens = this.getTokens();
     options.frames = this.prepareTokens(options.tokens);
     options.pos = game.settings.get(constants.moduleName, 'position');
+    options.skin = game.settings.get(constants.moduleName, 'skin');
     return options;
   }
 

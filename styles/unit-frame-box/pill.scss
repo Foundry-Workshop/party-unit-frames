@@ -1,0 +1,26 @@
+$radius: 20px;
+
+#unit-frame-box.pill {
+  .unit-frame {
+    .primary {
+      border-radius: $radius;
+
+      &::before {
+        border-radius: $radius;
+      }
+
+      .bar {
+        border-radius: $radius;
+
+        &::after {
+          border-radius: $radius;
+        }
+      }
+    }
+
+    .secondary {
+      margin: 0 15px;
+      width: ($width - 30);
+    }
+  }
+}

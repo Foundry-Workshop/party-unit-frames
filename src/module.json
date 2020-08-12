@@ -11,7 +11,7 @@
   ],
   "version": "0.1.0",
   "minimumCoreVersion": "0.6.0",
-  "compatibleCoreVersion": "0.6.5",
+  "compatibleCoreVersion": "0.7.0",
   "url": "https://github.com/Foundry-Workshop/party-unit-frames",
   "manifest": "https://raw.githubusercontent.com/Foundry-Workshop/party-unit-frames/master/src/module.json",
   "download": "https://github.com/Foundry-Workshop/party-unit-frames/releases/download/v0.1.0/v0.1.0.zip",

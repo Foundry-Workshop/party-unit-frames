@@ -1,0 +1,93 @@
+#unit-frame-box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: ($sizeMargin * $count);
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .move-handle {
+    position: absolute;
+    top: -18px;
+    left: 4px;
+    color: #ffffff88;
+  }
+
+  .unit-frame {
+    flex: 0 1 $size;
+    width: $width;
+    margin: $margin;
+    position: relative;
+
+    .primary {
+      position: relative;
+      width: 100%;
+      height: ($size - 3px);
+      z-index: 1;
+      border: 1px #66666688 solid;
+
+      &::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #00000099;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .bar {
+        position: relative;
+        height: 100%;
+        max-width: 100%;
+        min-width: 0;
+        border-right: 1px #66666688 solid;
+
+        &::after {
+          content: " ";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: rgb(255, 255, 255);
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 80%, rgba(0, 0, 0, 0.4) 100%);
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+        }
+      }
+    }
+
+    .secondary {
+      position: relative;
+      width: 100%;
+      height: 3px;
+
+      .bar {
+        position: relative;
+        height: 100%;
+        max-width: 100%;
+        min-width: 0;
+        background: $mana;
+      }
+    }
+
+    .name {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 5px 0 0 8px;
+      z-index: 3;
+      color: $textColor;
+      font-family: $textFont;
+      text-shadow: $textShadow;
+    }
+  }
+}
