@@ -1,8 +1,10 @@
 import constants from "../constants.js";
+import RepositionableApplication from "./RepositionableApplication.js";
 
-export default class UnitFramesBox extends Application {
+export default class UnitFramesBox extends RepositionableApplication {
   static app;
   tokenColors = {};
+  positionSetting = 'unit-frame-box-position';
 
   /** @override */
   static get defaultOptions() {
@@ -18,8 +20,8 @@ export default class UnitFramesBox extends Application {
     options = super.getData(options);
     options.tokens = this.getTokens();
     options.frames = this.prepareTokens(options.tokens);
-    options.pos = game.settings.get(constants.moduleName, 'position');
     options.skin = game.settings.get(constants.moduleName, 'skin');
+
     return options;
   }
 
@@ -117,8 +119,6 @@ export default class UnitFramesBox extends Application {
   activateListeners(html) {
     super.activateListeners(html);
 
-    html.find('.move-handle').mousedown(this.reposition);
-    // html.on('dblclick', '.unit-frame', this._handleFrameDoubleClick);
     html.on('click', '.unit-frame', this._handleFrameClick);
     html.on('contextmenu', '.unit-frame', this._handleFrameClick);
   }
@@ -162,75 +162,6 @@ export default class UnitFramesBox extends Application {
     canvas.animatePan({x: token.data.x, y: token.data.y, scale: 1});
   }
 
-  /**
-   * Repurposed code originally written by user ^ and stick for Token Action HUD
-   *
-   * @author ^ and stick#0520
-   * @url https://github.com/espositos/fvtt-tokenactionhud/blob/master/scripts/tokenactionhud.js#L199
-   */
-  reposition(ev) {
-    ev.preventDefault();
-    ev = ev || window.event;
-
-    let hud = $(ev.currentTarget).parent();
-    let marginLeft = parseInt(hud.css('marginLeft').replace('px', ''));
-    let marginTop = parseInt(hud.css('marginTop').replace('px', ''));
-
-    dragElement(document.getElementById(hud.attr('id')));
-    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-
-    function dragElement(elmnt) {
-      elmnt.onmousedown = dragMouseDown;
-
-      function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-      }
-
-      function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        elmnt.style.top = (elmnt.offsetTop - pos2) - marginTop + 'px';
-        elmnt.style.left = (elmnt.offsetLeft - pos1) - marginLeft + 'px';
-        elmnt.style.position = 'fixed';
-        elmnt.style.zIndex = '100';
-      }
-
-      function closeDragElement() {
-        // stop moving when mouse button is released:
-        elmnt.onmousedown = null;
-        document.onmouseup = null;
-        document.onmousemove = null;
-        let xPos = (elmnt.offsetLeft - pos1) > window.innerWidth ? window.innerWidth : (elmnt.offsetLeft - pos1);
-        let yPos = (elmnt.offsetTop - pos2) > window.innerHeight - 20 ? window.innerHeight - 100 : (elmnt.offsetTop - pos2);
-        xPos = xPos < 0 ? 0 : xPos;
-        yPos = yPos < 0 ? 0 : yPos;
-
-        if (xPos !== (elmnt.offsetLeft - pos1) || yPos !== (elmnt.offsetTop - pos2)) {
-          elmnt.style.top = (yPos) + 'px';
-          elmnt.style.left = (xPos) + 'px';
-        }
-
-        UnitFramesBox.savePosition({top: yPos, left: xPos});
-      }
-    }
-  }
-
-  static async savePosition(pos = {top: 400, left: 120}) {
-    if (pos.top && pos.left) return game.settings.set(constants.moduleName, 'position', pos);
-  }
-
   updateFrame(token) {
     let id = token.data?._id || token._id;
     token = canvas.tokens.get(id);
@@ -239,8 +170,8 @@ export default class UnitFramesBox extends Application {
     this.element.find(`#unit-frame-${id}`).each(function () {
       if (!token) return $(this).remove();
 
-      $(this).find('.primary .bar').css('width', _this.getPrimary(token) + "%");
-      $(this).find('.secondary .bar').css('width', _this.getSecondary(token) + "%");
+      $(this).find('.primary .bar').animate({'width': _this.getPrimary(token) + "%"});
+      $(this).find('.secondary .bar').animate({'width': _this.getSecondary(token) + "%"});
       $(this).find('.name').text(token.name);
     });
   }
@@ -249,5 +180,16 @@ export default class UnitFramesBox extends Application {
     let id = token._id;
 
     this.element.find(`#unit-frame-${id}`).remove();
+  }
+
+  setTargetFrame(token, isTargeted) {
+    let id = token.data?._id || token._id;
+
+    let frame = this.element.find(`#unit-frame-${id}`);
+    if (isTargeted) {
+      $(frame).addClass('target');
+    } else {
+      $(frame).removeClass('target');
+    }
   }
 }

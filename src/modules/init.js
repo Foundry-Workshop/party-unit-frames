@@ -1,6 +1,7 @@
 import constants from "./constants.js";
 import registerSettings from "./settings.js";
 import UnitFramesBox from "./apps/UnitFramesBox.js";
+import QuestTracker from "./apps/QuestTracker.js";
 
 Hooks.once('init', () => {
   registerSettings();
@@ -15,6 +16,7 @@ Hooks.once('setup', () => {
 
 Hooks.once("ready", () => {
   UnitFramesBox.init();
+  // QuestTracker.init();
 
   Hooks.callAll(`${constants.moduleName}:afterReady`);
 });
@@ -27,6 +29,11 @@ Hooks.on("canvasReady", () => {
 
 Hooks.on("createToken", () => {
   if (ui.unitFrames?.rendered) ui.unitFrames.render();
+});
+
+Hooks.on("targetToken", (user, token, isTargeted) => {
+  if (user.id !== game.user.id) return;
+  if (ui.unitFrames?.rendered) ui.unitFrames.setTargetFrame(token, isTargeted);
 });
 
 Hooks.on("deleteToken", (scene, token, options, userId) => {

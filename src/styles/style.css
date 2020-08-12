@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@keyframes target {
+  0% {
+    box-shadow: 0 0 0 #22caff; }
+  50% {
+    box-shadow: 0 0 10px #22caff; }
+  100% {
+    box-shadow: 0 0 1px #22caff; } }
 #unit-frame-box {
   position: absolute;
   display: flex;
@@ -71,6 +78,14 @@
       color: #fff;
       font-family: Roboto, Signika, sans-serif;
       text-shadow: 1px 1px 4px #000; }
+    #unit-frame-box .unit-frame.target .primary {
+      box-shadow: white;
+      animation: target 2s infinite; }
+    #unit-frame-box .unit-frame.target .name:after {
+      content: "\f140";
+      margin-left: 6px;
+      font-weight: 900;
+      font-family: "Font Awesome 5 Free"; }
 
 #unit-frame-box.pill .unit-frame .primary {
   border-radius: 20px; }
@@ -83,5 +98,20 @@
 #unit-frame-box.pill .unit-frame .secondary {
   margin: 0 15px;
   width: 90px; }
+
+#quest-tracker {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 200px;
+  background: #386bb5; }
+  #quest-tracker * {
+    box-sizing: border-box; }
+  #quest-tracker .move-handle {
+    position: absolute;
+    top: -18px;
+    left: 4px;
+    color: #ffffff88; }
 
 /*# sourceMappingURL=style.css.map */

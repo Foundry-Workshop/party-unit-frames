@@ -1,0 +1,19 @@
+#quest-tracker {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 200px;
+  background: #386bb5;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .move-handle {
+    position: absolute;
+    top: -18px;
+    left: 4px;
+    color: #ffffff88;
+  }
+}

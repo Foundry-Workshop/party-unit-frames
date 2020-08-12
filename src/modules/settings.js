@@ -1,10 +1,16 @@
 import constants from "./constants.js";
 
 export default function registerSettings() {
-  game.settings.register(constants.moduleName, "position", {
+  game.settings.register(constants.moduleName, "unit-frame-box-position", {
     scope: "client",
     config: false,
     default: {top: 400, left: 120},
+  });
+
+  game.settings.register(constants.moduleName, "quest-tracker-position", {
+    scope: "client",
+    config: false,
+    default: {top: 60, left: 1300},
   });
 
   game.settings.register(constants.moduleName, "skin", {

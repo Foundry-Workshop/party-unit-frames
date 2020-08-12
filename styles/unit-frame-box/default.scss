@@ -89,5 +89,22 @@
       font-family: $textFont;
       text-shadow: $textShadow;
     }
+
+
+    &.target {
+      .primary {
+        box-shadow: white;
+        animation: target 2s infinite;
+      }
+
+      .name {
+        &:after {
+          content: "\f140";
+          margin-left: 6px;
+          font-weight: 900;
+          font-family: "Font Awesome 5 Free";
+        }
+      }
+    }
   }
 }
