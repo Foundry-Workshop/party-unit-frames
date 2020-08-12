@@ -2,9 +2,11 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  height: 400px;
-  width: 200px;
-  background: #386bb5;
+  width: 300px;
+  background: #00000044;
+  padding: 5px;
+  color: #ddd;
+  text-shadow: 1px 1px 4px #333333cc;
 
   * {
     box-sizing: border-box;
@@ -15,5 +17,21 @@
     top: -18px;
     left: 4px;
     color: #ffffff88;
+  }
+
+  .entity-link {
+    background: #cccccc66;
+  }
+
+  .title {
+    margin-top: 6px;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+
+  .description {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 0;
   }
 }

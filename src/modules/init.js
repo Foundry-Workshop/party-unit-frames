@@ -16,7 +16,7 @@ Hooks.once('setup', () => {
 
 Hooks.once("ready", () => {
   UnitFramesBox.init();
-  // QuestTracker.init();
+  if (game.modules.get("forien-quest-log")?.active) QuestTracker.init();
 
   Hooks.callAll(`${constants.moduleName}:afterReady`);
 });

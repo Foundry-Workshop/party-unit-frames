@@ -19,11 +19,25 @@ export default class QuestTracker extends RepositionableApplication {
     options = super.getData(options);
     options.quests = this.prepareQuests();
 
+    console.log(options);
+
     return options;
   }
 
   prepareQuests() {
     const quests = Quest.getQuests();
+
+    return quests.active.map(q => ({
+      id: q.id,
+      source: q.giver,
+      title: q.title,
+      image: q.image,
+      description: this.truncate(q.description, 120),
+      tasks: q.tasks.filter(t => t.hidden === false).map(t => {
+        t.name = TextEditor.enrichHTML(t.name);
+        return t;
+      })
+    }))
   }
 
   static init() {
@@ -34,15 +48,22 @@ export default class QuestTracker extends RepositionableApplication {
     instance.render(true);
   }
 
+  truncate(str, n) {
+    str = $(`<p>${str}</p>`).text();
+
+    return (str.length > n) ? str.substr(0, n - 1) + '&hellip;' : str;
+  }
+
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
 
-    html.on('click', '.unit-frame', this._handleClick);
-    html.on('contextmenu', '.unit-frame', this._handleClick);
+    html.on('click', '.quest', this._handleClick);
+    html.on('contextmenu', '.quest', this._handleClick);
   }
 
   _handleClick(event) {
+    if ($(event.target).hasClass('entity-link')) return;
     event.preventDefault();
     event.stopPropagation();
 
@@ -62,6 +83,8 @@ export default class QuestTracker extends RepositionableApplication {
 
 
   static _onClick(event) {
+    const id = event.currentTarget.dataset.id;
+    Quests.open(id);
   }
 
   static _onRightClick(event) {
