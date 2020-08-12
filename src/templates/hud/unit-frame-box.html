@@ -1,0 +1,14 @@
+<div id="unit-frame-box" style="top: {{pos.top}}px; left: {{pos.left}}px">
+    <div class="move-handle"><i class="fas fa-arrows-alt"></i></div>
+    {{#each frames}}
+    <div class="unit-frame" id="unit-frame-{{this.id}}" data-id="{{this.id}}">
+        <div class="primary" style="background: {{this.color}}">
+            <div class="bar" style="background: {{this.color}}; width: {{this.primary}}%"></div>
+        </div>
+        <div class="secondary">
+            <div class="bar" style="width: {{this.secondary}}%"></div>
+        </div>
+        <div class="name">{{this.name}}</div>
+    </div>
+    {{/each}}
+</div>

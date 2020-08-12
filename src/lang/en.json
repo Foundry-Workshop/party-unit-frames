@@ -1,0 +1,10 @@
+{
+  "WorkshopModuleTemplate": {
+    "Settings": {
+      "someKey": {
+        "name": "Setting",
+        "hint": "Some hint."
+      }
+    }
+  }
+}
