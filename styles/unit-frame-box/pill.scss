@@ -4,16 +4,17 @@ $radius: 20px;
   .unit-frame {
     .primary {
       border-radius: $radius;
+      overflow: hidden;
 
       &::before {
         border-radius: $radius;
       }
 
       .bar {
-        border-radius: $radius;
+        border-radius: 0 $radius $radius 0;
 
         &::after {
-          border-radius: $radius;
+          border-radius: 0 $radius $radius 0;
         }
       }
     }
@@ -21,6 +22,10 @@ $radius: 20px;
     .secondary {
       margin: 0 15px;
       width: ($width - 30);
+    }
+
+    .name {
+      padding-left: 12px;
     }
   }
 }

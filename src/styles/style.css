@@ -88,16 +88,19 @@
       font-family: "Font Awesome 5 Free"; }
 
 #unit-frame-box.pill .unit-frame .primary {
-  border-radius: 20px; }
+  border-radius: 20px;
+  overflow: hidden; }
   #unit-frame-box.pill .unit-frame .primary::before {
     border-radius: 20px; }
   #unit-frame-box.pill .unit-frame .primary .bar {
-    border-radius: 20px; }
+    border-radius: 0 20px 20px 0; }
     #unit-frame-box.pill .unit-frame .primary .bar::after {
-      border-radius: 20px; }
+      border-radius: 0 20px 20px 0; }
 #unit-frame-box.pill .unit-frame .secondary {
   margin: 0 15px;
   width: 90px; }
+#unit-frame-box.pill .unit-frame .name {
+  padding-left: 12px; }
 
 #quest-tracker {
   position: absolute;
