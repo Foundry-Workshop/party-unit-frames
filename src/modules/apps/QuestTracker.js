@@ -18,8 +18,8 @@ export default class QuestTracker extends RepositionableApplication {
   getData(options = {}) {
     options = super.getData(options);
     options.quests = this.prepareQuests();
-
-    console.log(options);
+    if (game.settings.get(constants.moduleName, 'questTrackerBackground'))
+      options.background = 'background';
 
     return options;
   }
@@ -35,6 +35,7 @@ export default class QuestTracker extends RepositionableApplication {
       description: this.truncate(q.description, 120),
       tasks: q.tasks.filter(t => t.hidden === false).map(t => {
         t.name = TextEditor.enrichHTML(t.name);
+        t.state = t.completed ? 'completed' : (t.failed ? 'failed' : '');
         return t;
       })
     }))

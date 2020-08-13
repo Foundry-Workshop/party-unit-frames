@@ -1,4 +1,4 @@
-<div id="quest-tracker" class="{{skin}}" style="top: {{pos.top}}px; left: {{pos.left}}px">
+<div id="quest-tracker" class="{{background}}" style="top: {{pos.top}}px; {{#if pos.left}}left: {{pos.left}}px{{/if}}">
     <div class="move-handle"><i class="fas fa-arrows-alt"></i></div>
     {{#each quests}}
     <div class="quest" data-id="{{this.id}}">
@@ -6,7 +6,7 @@
         <p class="description">{{{this.description}}}</p>
         <ul class="tasks">
         {{#each this.tasks}}
-        <li class="task">{{{this.name}}} (completed: {{this.completed}}) (failed: {{this.failed}})</li>
+        <li class="task {{this.state}}">{{{this.name}}}</li>
         {{/each}}
         </ul>
     </div>

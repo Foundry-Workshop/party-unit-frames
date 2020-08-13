@@ -1,9 +1,27 @@
 {
-  "WorkshopModuleTemplate": {
+  "WorkshopPUF": {
     "Settings": {
-      "someKey": {
-        "name": "Setting",
-        "hint": "Some hint."
+      "skin": {
+        "name": "Unit Frames Skin",
+        "hint": "Select one of available skins for Unit Frames. Client-side setting only. ",
+        "default": "Default",
+        "pill": "Pill"
+      },
+      "enableQuestTracker": {
+        "name": "Enable Quest Tracker",
+        "hint": "Check this to enable Quest Tracker HUD window. Requires Forien's Quest Log module installed."
+      },
+      "questTrackerBackground": {
+        "name": "Quest Tracker Background",
+        "hint": "Check this to enable background for Quest Tracker, which might help with visibility on certain maps."
+      },
+      "resetUnitFrames": {
+        "name": "Reset Unit Frames Position",
+        "hint": "Check this to reset position of Unit Frames to default. Use this if you moved Unit Frames into position where you cannot move it anymore."
+      },
+      "resetQuestTracker": {
+        "name": "Reset Quest Tracker Position",
+        "hint": "Check this to reset position of Quest Tracker to default. Use this if you moved Quest Tracker into position where you cannot move it anymore."
       }
     }
   }

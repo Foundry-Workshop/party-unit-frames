@@ -15,22 +15,28 @@ Optionally adds Quest Tracker to work with Forien's Quest Log module.
 2. While loaded in World, enable **_Workshop's Party Unit Frames_** module.
 
 ## Usage
-Unit Frames display for all tokens you have permissions to display resource bars. 
+Unit Frames display for all tokens you have permissions to display resource bars of.
+* Click on Unit Frame to target token
+* Double click on Unit Frame to center your view on token
+* Right click on Unit Frame to open Actor Sheet if you are allowed to
 
-## Features 
-optional.
+To enable Quest Tracker you need to have installed and enabled [Forien's Quest Log](https://foundryvtt.com/packages/forien-quest-log/) module, and you need to enable Quest Tracker in module's settings. 
+* Click on Quest in Quest Tracker to open Quest Details window. 
+
+## Features
+* Two skins for Unit Frames
+* Toggleable backdrop for Quest Tracker
 
 ## Screenshots
-optional. 
+<img src="https://i.gyazo.com/322840363897bb38e4c5556a041b678d.png" height="300">
+<img src="https://i.gyazo.com/5978f6b22f2736af7fcccc45dccb8759.png" height="300">
+<img src="https://i.gyazo.com/7a01f4a215e6a706da362d643b6689dd.png" height="300">
 
 ## Future plans
 
 You can **always** check current and up-to-date [planned and requested features here](https://github.com/Foundry-Workshop/party-unit-frames/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement)
 
 *If you have **any** suggestion or idea on new contents, hit me up on Discord!*
-
-## Translations
-optional.
 
 ## Contact
 
@@ -41,7 +47,7 @@ If you wish to contact me for any reason, reach me out on Discord using my tag (
 If you wish to support module development, please consider [becoming Patron](https://www.patreon.com/foundryworkshop).
 
 ## Acknowledgements
-* Thanks for Anathema for [need to figure something out]
+* Thanks to Anathema for requesting the module and helping with UI
 
 ## License
 

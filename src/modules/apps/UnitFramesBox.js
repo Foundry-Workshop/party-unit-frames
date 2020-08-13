@@ -159,7 +159,10 @@ export default class UnitFramesBox extends RepositionableApplication {
   static _onDoubleClick(event) {
     const id = event.currentTarget.dataset.id;
     const token = canvas.tokens.get(id);
-    canvas.animatePan({x: token.data.x, y: token.data.y, scale: 1});
+    const grid = canvas.grid.size;
+    const x = token.data.x + grid;
+    const y = token.data.y + Math.round(grid / 2);
+    canvas.animatePan({x: x, y: y, scale: 1});
   }
 
   updateFrame(token) {
@@ -188,6 +191,13 @@ export default class UnitFramesBox extends RepositionableApplication {
     let frame = this.element.find(`#unit-frame-${id}`);
     if (isTargeted) {
       $(frame).addClass('target');
+
+      // Sync animations
+      let frames = this.element.find('.target');
+      frames.removeClass('target');
+      frames.each(function () { $(this).height(); });
+      frames.addClass('target');
+      // End sync animations
     } else {
       $(frame).removeClass('target');
     }

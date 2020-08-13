@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@600&family=Open+Sans&family=Oswald&display=swap");
 @keyframes target {
   0% {
     box-shadow: 0 0 0 #22caff; }
@@ -107,26 +109,57 @@
   display: flex;
   flex-direction: column;
   width: 300px;
-  background: #00000044;
+  right: 320px;
   padding: 5px;
   color: #ddd;
-  text-shadow: 1px 1px 4px #333333cc; }
+  text-shadow: 1px 1px 1px #000; }
+  #quest-tracker.background {
+    background: #33333399; }
   #quest-tracker * {
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    font-family: "Open Sans", Lato, Signika, sans-serif; }
+  #quest-tracker .far, #quest-tracker .fas, #quest-tracker .fa {
+    font-family: "Font Awesome 5 Free"; }
   #quest-tracker .move-handle {
     position: absolute;
-    top: -18px;
+    top: -20px;
     left: 4px;
-    color: #ffffff88; }
+    color: #ffffff88;
+    text-shadow: none; }
   #quest-tracker .entity-link {
     background: #cccccc66; }
   #quest-tracker .title {
-    margin-top: 6px;
     margin-bottom: 0;
-    cursor: pointer; }
+    cursor: pointer;
+    font-family: Oswald, Montserrat, Signika, sans-serif;
+    font-size: 20px; }
   #quest-tracker .description {
     font-size: 12px;
     font-style: italic;
     margin-top: 0; }
+  #quest-tracker .tasks {
+    list-style: none;
+    margin-bottom: 6px; }
+    #quest-tracker .tasks .task {
+      position: relative; }
+      #quest-tracker .tasks .task::before {
+        content: "\f0c8";
+        position: absolute;
+        margin-right: 4px;
+        font-weight: 400;
+        font-family: "Font Awesome 5 Free";
+        left: -15px;
+        padding-top: 3px; }
+      #quest-tracker .tasks .task.failed {
+        text-decoration: line-through; }
+        #quest-tracker .tasks .task.failed::before {
+          content: "\f00d";
+          font-weight: 900;
+          padding-left: 1px; }
+      #quest-tracker .tasks .task.completed {
+        text-decoration: line-through; }
+        #quest-tracker .tasks .task.completed::before {
+          content: "\f00c";
+          font-weight: 900; }
 
 /*# sourceMappingURL=style.css.map */
