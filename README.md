@@ -28,9 +28,7 @@ To enable Quest Tracker you need to have installed and enabled [Forien's Quest L
 * Toggleable backdrop for Quest Tracker
 
 ## Screenshots
-<img src="https://i.gyazo.com/322840363897bb38e4c5556a041b678d.png" height="300">
-<img src="https://i.gyazo.com/5978f6b22f2736af7fcccc45dccb8759.png" height="300">
-<img src="https://i.gyazo.com/7a01f4a215e6a706da362d643b6689dd.png" height="300">
+<img src="https://i.gyazo.com/322840363897bb38e4c5556a041b678d.png" height="300" /><img src="https://i.gyazo.com/5978f6b22f2736af7fcccc45dccb8759.png" height="300" /><img src="https://i.gyazo.com/7a01f4a215e6a706da362d643b6689dd.png" height="300" />
 
 ## Future plans
 
