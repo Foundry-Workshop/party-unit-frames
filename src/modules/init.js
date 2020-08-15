@@ -43,6 +43,7 @@ Hooks.on("deleteToken", (scene, token, options, userId) => {
 });
 
 Hooks.on("updateToken", (scene, token, data, options, userId) => {
+  if (data.displayBars !== undefined && ui.unitFrames?.rendered) return ui.unitFrames.render();
   if (ui.unitFrames?.rendered) ui.unitFrames.updateFrame(token);
 });
 
