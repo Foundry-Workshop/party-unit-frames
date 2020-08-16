@@ -1,14 +1,18 @@
-<div id="unit-frame-box" class="{{skin}}" style="top: {{pos.top}}px; left: {{pos.left}}px">
+<div id="unit-frame-box" class="{{skin}} {{filter}}" style="top: {{pos.top}}px; left: {{pos.left}}px">
     <div class="move-handle"><i class="fas fa-arrows-alt"></i></div>
     {{#each frames}}
     <div class="unit-frame" id="unit-frame-{{this.id}}" data-id="{{this.id}}">
         <div class="primary" style="background: {{this.color}}">
-            <div class="bar" style="background: {{this.color}}; width: {{this.primary}}%"></div>
+            <div class="bar" style="background: {{this.color}}; width: {{this.primary.percent}}%"></div>
         </div>
         <div class="secondary">
-            <div class="bar" style="width: {{this.secondary}}%"></div>
+            <div class="bar" style="width: {{this.secondary.percent}}%"></div>
+            <div class="secondaryValue" {{#unless (and ../displayValues this.secondary.value)}}style="display:none"{{/unless}}>{{this.secondary.value}}/{{this.secondary.max}}</div>
         </div>
-        <div class="name">{{this.name}}</div>
+        <div class="name">
+            {{this.name}}
+            <div class="primaryValue" {{#unless ../displayValues}}style="display:none"{{/unless}}>{{this.primary.value}}/{{this.primary.max}}</div>
+        </div>
     </div>
     {{/each}}
 </div>

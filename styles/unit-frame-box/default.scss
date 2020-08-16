@@ -75,6 +75,18 @@
         min-width: 0;
         background: $mana;
       }
+
+      .secondaryValue {
+        color: $textColor;
+        text-shadow: $textShadow;
+        font-family: $textFont;
+        font-size: 10px;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: -6px;
+        z-index: 10;
+      }
     }
 
     .name {
@@ -88,6 +100,12 @@
       color: $textColor;
       font-family: $textFont;
       text-shadow: $textShadow;
+    }
+
+    .primaryValue {
+      float: right;
+      padding-right: 8px;
+      font-size: 11px;
     }
 
 

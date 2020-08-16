@@ -1,0 +1,28 @@
+/* Thin bars with softer colors*/
+#unit-frame-box.thin {
+  height: (29px * $count);
+
+  .unit-frame {
+    flex: 0 1 25px;
+
+    .primary {
+      height: 20px;
+      overflow: hidden;
+    }
+
+    .secondary {
+      height: 5px;
+
+      .secondaryValue {
+        top: -5px;
+      }
+    }
+
+    .name {
+      padding-top: 3px;
+      font-size: .8em;
+      padding-left: 12px;
+      filter: drop-shadow(1px 1px 1px black);
+    }
+  }
+}

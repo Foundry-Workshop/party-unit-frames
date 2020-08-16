@@ -26,13 +26,44 @@ export default function registerSettings() {
     type: String,
     choices: {
       "default": "WorkshopPUF.Settings.skin.default",
-      "pill": "WorkshopPUF.Settings.skin.pill"
+      "pill": "WorkshopPUF.Settings.skin.pill",
+      "thin": "WorkshopPUF.Settings.skin.thin"
     },
     onChange: value => {
       if (ui.unitFrames?.rendered) {
-        ui.unitFrames.element.removeClass().addClass(value);
+        ui.unitFrames.element.removeClass('default pill thin').addClass(value);
       }
     }
+  });
+
+  game.settings.register(constants.moduleName, "filter", {
+    name: "WorkshopPUF.Settings.filter.name",
+    hint: "WorkshopPUF.Settings.filter.hint",
+    scope: "client",
+    config: true,
+    default: 'none',
+    type: String,
+    choices: {
+      "none": "WorkshopPUF.Settings.filter.none",
+      "damped": "WorkshopPUF.Settings.filter.damped",
+      "grayscale": "WorkshopPUF.Settings.filter.grayscale",
+      "sepia": "WorkshopPUF.Settings.filter.sepia"
+    },
+    onChange: value => {
+      if (ui.unitFrames?.rendered) {
+        ui.unitFrames.element.removeClass('none damped grayscale sepia').addClass(value);
+      }
+    }
+  });
+
+  game.settings.register(constants.moduleName, "showResourceValues", {
+    name: "WorkshopPUF.Settings.showResourceValues.name",
+    hint: "WorkshopPUF.Settings.showResourceValues.hint",
+    scope: "world",
+    config: true,
+    default: false,
+    type: Boolean,
+    onChange: value => ui.unitFrames?.render()
   });
 
   game.settings.register(constants.moduleName, "enableQuestTracker", {

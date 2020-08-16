@@ -1,0 +1,11 @@
+#unit-frame-box.grayscale {
+  filter: grayscale(1);
+}
+
+#unit-frame-box.sepia {
+  filter: sepia(1);
+}
+
+#unit-frame-box.damped {
+  filter: grayscale(.5);
+}

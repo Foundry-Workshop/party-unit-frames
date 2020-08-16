@@ -21,6 +21,8 @@ export default class UnitFramesBox extends RepositionableApplication {
     options.tokens = this.getTokens();
     options.frames = this.prepareTokens(options.tokens);
     options.skin = game.settings.get(constants.moduleName, 'skin');
+    options.filter = game.settings.get(constants.moduleName, 'filter');
+    options.displayValues = game.settings.get(constants.moduleName, 'showResourceValues');
 
     return options;
   }
@@ -51,9 +53,20 @@ export default class UnitFramesBox extends RepositionableApplication {
 
   getAttribute(token, bar) {
     let barData = token.getBarAttribute(bar);
-    if (!barData) return 0;
+    if (!barData) return {
+      percent: 0,
+      value: 0,
+      max: 0,
+    };
 
-    return Math.round((barData.value * 100) / barData.max);
+    let percent = Math.round((barData.value * 100) / barData.max);
+
+    percent = Math.min(100, Math.max(0, percent));
+    return {
+      percent: percent,
+      value: barData.value,
+      max: barData.max,
+    }
   }
 
   getTokenColor(token) {
@@ -146,7 +159,7 @@ export default class UnitFramesBox extends RepositionableApplication {
     const id = event.currentTarget.dataset.id;
     const token = canvas.tokens.get(id);
     const release = !game.keyboard.isDown("Shift");
-    token.setTarget(true, {user: game.user, releaseOthers: release});
+    token.setTarget(!token.isTargeted, {user: game.user, releaseOthers: release});
   }
 
   static _onRightClick(event) {
@@ -157,6 +170,7 @@ export default class UnitFramesBox extends RepositionableApplication {
   }
 
   static _onDoubleClick(event) {
+    UnitFramesBox._onClick(event);
     const id = event.currentTarget.dataset.id;
     const token = canvas.tokens.get(id);
     const grid = canvas.grid.size;
