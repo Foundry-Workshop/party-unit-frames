@@ -11,7 +11,7 @@ Optionally adds Quest Tracker to work with Forien's Quest Log module.
 
 ## Installation
 
-1. Install Workshop's Party Unit Frames using manifest URL: https://raw.githubusercontent.com/Foundry-Workshop/party-unit-frames/master/module.json
+1. Install Workshop's Party Unit Frames using manifest URL: https://raw.githubusercontent.com/Foundry-Workshop/party-unit-frames/master/src/module.json
 2. While loaded in World, enable **_Workshop's Party Unit Frames_** module.
 
 ## Usage
