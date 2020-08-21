@@ -187,9 +187,19 @@ export default class UnitFramesBox extends RepositionableApplication {
     this.element.find(`#unit-frame-${id}`).each(function () {
       if (!token) return $(this).remove();
 
-      $(this).find('.primary .bar').animate({'width': _this.getPrimary(token) + "%"});
-      $(this).find('.secondary .bar').animate({'width': _this.getSecondary(token) + "%"});
-      $(this).find('.name').text(token.name);
+      let primary = _this.getPrimary(token);
+      let secondary = _this.getSecondary(token);
+      $(this).find('.primary .bar').animate({'width': primary.percent + "%"});
+      $(this).find('.secondary .bar').animate({'width': secondary.percent + "%"});
+
+      let displayValues = game.settings.get(constants.moduleName, 'showResourceValues');
+      let name = token.name;
+      if (displayValues) {
+        name += `<div class="primaryValue">${primary.value}/${primary.max}</div>`;
+        $(this).find('.secondaryValue').html(`${secondary.value}/${secondary.max}`);
+      }
+
+      $(this).find('.name').html(name);
     });
   }
 
@@ -209,7 +219,9 @@ export default class UnitFramesBox extends RepositionableApplication {
       // Sync animations
       let frames = this.element.find('.target');
       frames.removeClass('target');
-      frames.each(function () { $(this).height(); });
+      frames.each(function () {
+        $(this).height();
+      });
       frames.addClass('target');
       // End sync animations
     } else {

@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.1.3
+* Fixed bug introduced in 0.1.2, interfering with unit frames updates
+
 ## v0.1.2
 * Added ability to untarget tokens by clicking again on Unit Frame
 * Added support for Filters and added Sepia, Greyscale and Damped filters

@@ -9,14 +9,14 @@
       "url": "https://www.patreon.com/foundryworkshop"
     }
   ],
-  "version": "0.1.2",
+  "version": "0.1.3",
   "minimumCoreVersion": "0.6.0",
   "compatibleCoreVersion": "0.7.0",
   "url": "https://github.com/Foundry-Workshop/party-unit-frames",
   "manifest": "https://raw.githubusercontent.com/Foundry-Workshop/party-unit-frames/master/src/module.json",
-  "download": "https://github.com/Foundry-Workshop/party-unit-frames/releases/download/v0.1.2/v0.1.2.zip",
-  "readme": "https://github.com/Foundry-Workshop/party-unit-frames/blob/v0.1.2/README.md",
-  "changelog": "https://github.com/Foundry-Workshop/party-unit-frames/blob/v0.1.2/changelog.md",
+  "download": "https://github.com/Foundry-Workshop/party-unit-frames/releases/download/v0.1.3/v0.1.3.zip",
+  "readme": "https://github.com/Foundry-Workshop/party-unit-frames/blob/v0.1.3/README.md",
+  "changelog": "https://github.com/Foundry-Workshop/party-unit-frames/blob/v0.1.3/changelog.md",
   "bugs": "https://github.com/Foundry-Workshop/party-unit-frames/issues",
   "esmodules": [
     "./modules/init.js"
