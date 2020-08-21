@@ -24,7 +24,8 @@ To enable Quest Tracker you need to have installed and enabled [Forien's Quest L
 * Click on Quest in Quest Tracker to open Quest Details window. 
 
 ## Features
-* Two skins for Unit Frames
+* Three skins for Unit Frames
+* Three filters for Unit Frames
 * Toggleable backdrop for Quest Tracker
 
 ## Screenshots
