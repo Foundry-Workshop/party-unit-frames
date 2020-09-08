@@ -1,5 +1,6 @@
 import constants from "./constants.js";
 import QuestTracker from "./apps/QuestTracker.js";
+import UnitFramesBox from "./apps/UnitFramesBox.js";
 
 const unitFrameDefault = {top: 400, left: 120};
 const questTrackerDefault = {top: 80};
@@ -94,6 +95,7 @@ export default function registerSettings() {
       if (ui.unitFrames?.rendered) {
         ui.unitFrames.close();
       } else {
+        UnitFramesBox.init();
         ui.unitFrames.render(true);
       }
     }

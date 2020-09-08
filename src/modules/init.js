@@ -15,7 +15,9 @@ Hooks.once('setup', () => {
 });
 
 Hooks.once("ready", () => {
-  UnitFramesBox.init();
+  if (game.settings.get(constants.moduleName, 'enableUnitFramesBox'))
+    UnitFramesBox.init();
+
   if (game.settings.get(constants.moduleName, 'enableQuestTracker'))
     if (game.modules.get("forien-quest-log")?.active)
       QuestTracker.init();
