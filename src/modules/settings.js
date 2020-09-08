@@ -83,6 +83,22 @@ export default function registerSettings() {
     }
   });
 
+  game.settings.register(constants.moduleName, "enableUnitFramesBox", {
+    name: "WorkshopPUF.Settings.enableUnitFramesBox.name",
+    hint: "WorkshopPUF.Settings.enableUnitFramesBox.hint",
+    scope: "world",
+    config: true,
+    default: true,
+    type: Boolean,
+    onChange: value => {
+      if (ui.unitFrames?.rendered) {
+        ui.unitFrames.close();
+      } else {
+        ui.unitFrames.render(true);
+      }
+    }
+  });
+
   game.settings.register(constants.moduleName, "questTrackerBackground", {
     name: "WorkshopPUF.Settings.questTrackerBackground.name",
     hint: "WorkshopPUF.Settings.questTrackerBackground.hint",

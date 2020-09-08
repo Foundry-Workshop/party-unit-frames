@@ -24,6 +24,10 @@
         "name": "Enable Quest Tracker",
         "hint": "Check this to enable Quest Tracker HUD window. Requires Forien's Quest Log module installed."
       },
+      "enableUnitFramesBox": {
+        "name": "Enable Unit Frames Box",
+        "hint": "Check this to enable Unit Frames Box HUD window."
+      },
       "questTrackerBackground": {
         "name": "Quest Tracker Background",
         "hint": "Check this to enable background for Quest Tracker, which might help with visibility on certain maps."
