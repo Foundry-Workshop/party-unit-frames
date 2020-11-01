@@ -56,6 +56,16 @@ export default function registerSettings() {
     }
   });
 
+  game.settings.register(constants.moduleName, "showUnlikedTokens", {
+    name: "WorkshopPUF.Settings.showUnlikedTokens.name",
+    hint: "WorkshopPUF.Settings.showUnlikedTokens.hint",
+    scope: "world",
+    config: true,
+    default: true,
+    type: Boolean,
+    onChange: value => ui.unitFrames?.render()
+  });
+
   game.settings.register(constants.moduleName, "showResourceValues", {
     name: "WorkshopPUF.Settings.showResourceValues.name",
     hint: "WorkshopPUF.Settings.showResourceValues.hint",
