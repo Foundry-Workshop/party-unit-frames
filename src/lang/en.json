@@ -16,6 +16,10 @@
         "grayscale": "Greyscale",
         "sepia": "Sepia"
       },
+      "showUnlikedTokens": {
+        "name": "Show Unlinked Tokens",
+        "hint": "Check this to display the unlinked tokens in the Unit Frame."
+      },
       "showResourceValues": {
         "name": "Show Resource Values",
         "hint": "Check this to display resource values on Unit Frame bars for all players."
