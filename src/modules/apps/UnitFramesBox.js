@@ -23,7 +23,7 @@ export default class UnitFramesBox extends RepositionableApplication {
     options.skin = game.settings.get(constants.moduleName, 'skin');
     options.filter = game.settings.get(constants.moduleName, 'filter');
     options.displayValues = game.settings.get(constants.moduleName, 'showResourceValues');
-
+    options.displayUnliked = game.settings.get(constants.moduleName, 'showUnlikedTokens');
     return options;
   }
 
@@ -87,6 +87,7 @@ export default class UnitFramesBox extends RepositionableApplication {
   }
 
   getTokens() {
+    let showUnlikedTokens = game.settings.get(constants.moduleName, 'showUnlikedTokens');
     const tokens = new Map();
 
     // first linked character
@@ -97,9 +98,9 @@ export default class UnitFramesBox extends RepositionableApplication {
       }
     }
     // then all owned, sorted alphabetically
-    canvas.tokens.placeables.filter(t => t.owner && this.canSeeBars(t)).sort(this._sortNames).forEach(t => tokens.set(t.id, t));
-    // then rest, sorted alphabetically
-    canvas.tokens.placeables.filter(t => this.canSeeBars(t)).sort(this._sortNames).forEach(t => tokens.set(t.id, t));
+    canvas.tokens.placeables.filter(t => t.owner && this.canSeeBars(t) && (showUnlikedTokens || (!showUnlikedTokens && t.data.actorLink))).sort(this._sortNames).forEach(t => tokens.set(t.id, t));
+    // then rest, sorted alphabetically	    // then rest, sorted alphabetically
+    canvas.tokens.placeables.filter(t => this.canSeeBars(t)).sort(this._sortNames).forEach(t => tokens.set(t.id, t));	    canvas.tokens.placeables.filter(t => this.canSeeBars(t) && (showUnlikedTokens || (!showUnlikedTokens && t.data.actorLink))).sort(this._sortNames).forEach(t => tokens.set(t.id, t));
 
     return tokens;
   }
