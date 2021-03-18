@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+// Unit Frame Box
+$count: 6;
+
+// Unit Frame
+$width: 120px;
+$margin: 2px;
+$size: 40px;
+$sizeMargin: $size + $margin * 2;
+
+// Unit Frame Secondary Bar
+$mana: #386bb5;
+
+// Unit Frame Text
+$textColor: #fff;
+$textFont: Roboto, Signika, sans-serif;
+$textShadowColor: #000;
+$textShadow: 1px 1px 4px $textShadowColor;
+
+@import "./unit-frame-box";
+@import "./quest-tracker";
+

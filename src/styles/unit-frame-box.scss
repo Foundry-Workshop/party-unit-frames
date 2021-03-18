@@ -16,8 +16,8 @@ $textFont: Roboto, Signika, sans-serif;
 $textShadowColor: #000;
 $textShadow: 1px 1px 4px $textShadowColor;
 
-@import "animations";
-@import "unit-frame-box/default";
-@import "unit-frame-box/pill";
-@import "unit-frame-box/thin";
-@import "unit-frame-box/filters";
+@import "./animations";
+@import "./unit-frame-box/default";
+@import "./unit-frame-box/pill";
+@import "./unit-frame-box/thin";
+@import "./unit-frame-box/filters";

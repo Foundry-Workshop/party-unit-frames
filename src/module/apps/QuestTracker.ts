@@ -1,5 +1,8 @@
-import constants from "../constants.js";
-import RepositionableApplication from "./RepositionableApplication.js";
+import { MODULE_NAME } from "../settings";
+//@ts-ignore
+import { Quest } from '../../../forien-quest-log/entities/Quest';
+
+import RepositionableApplication from "./RepositionableApplication";
 
 export default class QuestTracker extends RepositionableApplication {
   static app;
@@ -9,7 +12,7 @@ export default class QuestTracker extends RepositionableApplication {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       id: "quest-tracker",
-      template: `${constants.modulePath}/templates/hud/quest-tracker.html`,
+      template: `${MODULE_NAME}/templates/hud/quest-tracker.html`,
       popOut: false
     });
   }
@@ -17,9 +20,9 @@ export default class QuestTracker extends RepositionableApplication {
   /** @override */
   getData(options = {}) {
     options = super.getData(options);
-    options.quests = this.prepareQuests();
-    if (game.settings.get(constants.moduleName, 'questTrackerBackground'))
-      options.background = 'background';
+    options['quests'] = this.prepareQuests();
+    if (game.settings.get(MODULE_NAME, 'questTrackerBackground'))
+      options['background'] = 'background';
 
     return options;
   }
@@ -42,10 +45,10 @@ export default class QuestTracker extends RepositionableApplication {
   }
 
   static init() {
-    if (ui.questTracker instanceof this) return;
+    if (ui['questTracker'] instanceof this) return;
 
     const instance = new this();
-    ui.questTracker = instance;
+    ui['questTracker'] = instance;
     instance.render(true);
   }
 
@@ -85,7 +88,8 @@ export default class QuestTracker extends RepositionableApplication {
 
   static _onClick(event) {
     const id = event.currentTarget.dataset.id;
-    Quests.open(id);
+    //Quests.open(id);
+    window['Quests'].open(id);
   }
 
   static _onRightClick(event) {

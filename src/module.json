@@ -9,17 +9,9 @@
       "url": "https://www.patreon.com/foundryworkshop"
     }
   ],
-  "version": "0.1.4",
-  "minimumCoreVersion": "0.6.0",
-  "compatibleCoreVersion": "0.7.0",
-  "url": "https://github.com/p4535992/party-unit-frames",
-  "manifest": "https://raw.githubusercontent.com/p4535992/party-unit-frames/master/src/module.json",
-  "download": "https://github.com/p4535992/party-unit-frames/archive/v0.1.4.zip",
-  "readme": "https://github.com/p4535992/party-unit-frames/blob/v0.1.4/README.md",
-  "changelog": "https://github.com/p4535992/party-unit-frames/blob/v0.1.4/changelog.md",
-  "bugs": "https://github.com/p4535992/party-unit-frames/issues",
+  "version": "0.1.5",
   "esmodules": [
-    "./modules/init.js"
+    ".foundryvtt-workshop-party-unit-frames.js"
   ],
   "styles": [
     "./styles/style.css"
@@ -33,5 +25,22 @@
       "name": "English",
       "path": "lang/en.json"
     }
+  ],
+  "url": "https://github.com/p4535992/party-unit-frames",
+  "manifest": "https://raw.githubusercontent.com/p4535992/party-unit-frames/master/src/module.json",
+  "download": "https://raw.githubusercontent.com/p4535992/party-unit-frames/master/package/workshop-party-unit-frames-v0.1.5.zip",
+  "readme": "https://github.com/p4535992/party-unit-frames/blob/master/README.md",
+  "changelog": "https://github.com/p4535992/party-unit-frames/blob/master/changelog.md",
+  "bugs": "https://github.com/p4535992/party-unit-frames/issues",
+  "minimumCoreVersion": "0.7.6",
+  "compatibleCoreVersion": "0.7.9",
+  "dependencies": [
+    {
+      "name": "forien-quest-log"
+    },
+    {
+      "name": "lib-wrapper"
+    }
   ]
+
 }
