@@ -6,6 +6,8 @@
 **[Systems]**: *any*  
 **[Languages]**: *English*  
 
+# NOTE: I didn't own any right on this code, i just make some adjustment, i hope the guys from Foundry-WorkShop get better and update this module themself.
+
 This module displays Party Unit Frames for allied tokens for games played via Foundry Virtual Tabletop.
 Optionally adds Quest Tracker to work with Forien's Quest Log module.
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.4 (by p4535992)
+
+* Merge [New unlinked display setting #9](https://github.com/Foundry-Workshop/party-unit-frames/pull/9)
+* Merge [Added on the module settings the ability to hide the unit frame box if you need only the quest log tracker #7](https://github.com/Foundry-Workshop/party-unit-frames/pull/7)
+
 ## v0.1.3
 * Fixed bug introduced in 0.1.2, interfering with unit frames updates
 

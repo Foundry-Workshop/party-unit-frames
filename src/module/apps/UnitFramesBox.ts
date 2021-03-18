@@ -1,4 +1,5 @@
-import constants from "../constants.js";
+
+import { MODULE_NAME } from "../settings.js";
 import RepositionableApplication from "./RepositionableApplication.js";
 
 export default class UnitFramesBox extends RepositionableApplication {
@@ -10,20 +11,20 @@ export default class UnitFramesBox extends RepositionableApplication {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       id: "unit-frame-box",
-      template: `${constants.modulePath}/templates/hud/unit-frame-box.html`,
+      template: `/modules/${MODULE_NAME}/templates/hud/unit-frame-box.html`,
       popOut: false
     });
   }
 
   /** @override */
-  getData(options = {}) {
+  getData(options:any = {}) {
     options = super.getData(options);
     options.tokens = this.getTokens();
     options.frames = this.prepareTokens(options.tokens);
-    options.skin = game.settings.get(constants.moduleName, 'skin');
-    options.filter = game.settings.get(constants.moduleName, 'filter');
-    options.displayValues = game.settings.get(constants.moduleName, 'showResourceValues');
-
+    options.skin = game.settings.get(MODULE_NAME, 'skin');
+    options.filter = game.settings.get(MODULE_NAME, 'filter');
+    options.displayValues = game.settings.get(MODULE_NAME, 'showResourceValues');
+    options.displayUnliked = game.settings.get(MODULE_NAME, 'showUnlikedTokens');
     return options;
   }
 
@@ -71,7 +72,7 @@ export default class UnitFramesBox extends RepositionableApplication {
 
   getTokenColor(token) {
     if (token.actor) {
-      const user = game.users.entities.filter(u => u.character).find(u => token.actor.id === u.character.id);
+      const user:any = game.users.entities.filter(u => u.character).find(u => token.actor.id === u.character.id);
       if (user) return user.data.color;
     }
 
@@ -87,6 +88,7 @@ export default class UnitFramesBox extends RepositionableApplication {
   }
 
   getTokens() {
+    let showUnlikedTokens = game.settings.get(MODULE_NAME, 'showUnlikedTokens');
     const tokens = new Map();
 
     // first linked character
@@ -97,9 +99,9 @@ export default class UnitFramesBox extends RepositionableApplication {
       }
     }
     // then all owned, sorted alphabetically
-    canvas.tokens.placeables.filter(t => t.owner && this.canSeeBars(t)).sort(this._sortNames).forEach(t => tokens.set(t.id, t));
-    // then rest, sorted alphabetically
-    canvas.tokens.placeables.filter(t => this.canSeeBars(t)).sort(this._sortNames).forEach(t => tokens.set(t.id, t));
+    canvas.tokens.placeables.filter(t => t.owner && this.canSeeBars(t) && (showUnlikedTokens || (!showUnlikedTokens && t.data.actorLink))).sort(this._sortNames).forEach(t => tokens.set(t.id, t));
+    // then rest, sorted alphabetically	    // then rest, sorted alphabetically
+    canvas.tokens.placeables.filter(t => this.canSeeBars(t)).sort(this._sortNames).forEach(t => tokens.set(t.id, t));	    canvas.tokens.placeables.filter(t => this.canSeeBars(t) && (showUnlikedTokens || (!showUnlikedTokens && t.data.actorLink))).sort(this._sortNames).forEach(t => tokens.set(t.id, t));
 
     return tokens;
   }
@@ -124,7 +126,7 @@ export default class UnitFramesBox extends RepositionableApplication {
 
   static init() {
     const instance = new this();
-    ui.unitFrames = instance;
+    ui['unitFrames'] = instance;
     instance.render(true);
   }
 
@@ -158,7 +160,8 @@ export default class UnitFramesBox extends RepositionableApplication {
   static _onClick(event) {
     const id = event.currentTarget.dataset.id;
     const token = canvas.tokens.get(id);
-    const release = !game.keyboard.isDown("Shift");
+    const release = !game.keyboard.isDown(event.shiftKey);
+    // const release = !game.keyboard.isDown("Shift");
     token.setTarget(!token.isTargeted, {user: game.user, releaseOthers: release});
   }
 
@@ -184,7 +187,7 @@ export default class UnitFramesBox extends RepositionableApplication {
     token = canvas.tokens.get(id);
     const _this = this;
 
-    this.element.find(`#unit-frame-${id}`).each(function () {
+    this.element['find'](`#unit-frame-${id}`).each(function () {
       if (!token) return $(this).remove();
 
       let primary = _this.getPrimary(token);
@@ -192,7 +195,7 @@ export default class UnitFramesBox extends RepositionableApplication {
       $(this).find('.primary .bar').animate({'width': primary.percent + "%"});
       $(this).find('.secondary .bar').animate({'width': secondary.percent + "%"});
 
-      let displayValues = game.settings.get(constants.moduleName, 'showResourceValues');
+      let displayValues = game.settings.get(MODULE_NAME, 'showResourceValues');
       let name = token.name;
       if (displayValues) {
         name += `<div class="primaryValue">${primary.value}/${primary.max}</div>`;
@@ -206,18 +209,18 @@ export default class UnitFramesBox extends RepositionableApplication {
   removeFrame(token) {
     let id = token._id;
 
-    this.element.find(`#unit-frame-${id}`).remove();
+    this.element['find'](`#unit-frame-${id}`).remove();
   }
 
   setTargetFrame(token, isTargeted) {
     let id = token.data?._id || token._id;
 
-    let frame = this.element.find(`#unit-frame-${id}`);
+    let frame = this.element['find'](`#unit-frame-${id}`);
     if (isTargeted) {
       $(frame).addClass('target');
 
       // Sync animations
-      let frames = this.element.find('.target');
+      let frames = this.element['find']('.target');
       frames.removeClass('target');
       frames.each(function () {
         $(this).height();

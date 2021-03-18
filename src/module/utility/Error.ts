@@ -1,8 +1,9 @@
-import constants from "../constants.js";
+import { MODULE_NAME } from "../settings";
+
 
 export default class WorkshopError extends Error {
   constructor(error) {
-    error = `${constants.moduleLabel} | ${error}`;
+    error = `${MODULE_NAME} | ${error}`;
     super(error);
   }
 }

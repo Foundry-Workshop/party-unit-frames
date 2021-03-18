@@ -1,5 +1,5 @@
 {
-  "WorkshopPUF": {
+  "workshop-party-unit-frames": {
     "Settings": {
       "skin": {
         "name": "Unit Frames Skin",
@@ -16,6 +16,10 @@
         "grayscale": "Greyscale",
         "sepia": "Sepia"
       },
+      "showUnlikedTokens": {
+        "name": "Show Unlinked Tokens",
+        "hint": "Check this to display the unlinked tokens in the Unit Frame."
+      },
       "showResourceValues": {
         "name": "Show Resource Values",
         "hint": "Check this to display resource values on Unit Frame bars for all players."
@@ -23,6 +27,10 @@
       "enableQuestTracker": {
         "name": "Enable Quest Tracker",
         "hint": "Check this to enable Quest Tracker HUD window. Requires Forien's Quest Log module installed."
+      },
+      "enableUnitFramesBox": {
+        "name": "Enable Unit Frames Box",
+        "hint": "Check this to enable Unit Frames Box HUD window."
       },
       "questTrackerBackground": {
         "name": "Quest Tracker Background",

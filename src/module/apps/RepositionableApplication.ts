@@ -1,13 +1,13 @@
-import constants from "../constants.js";
+import { MODULE_NAME } from "../settings";
 
 export default class RepositionableApplication extends Application {
   static app;
   positionSetting;
 
   /** @override */
-  getData(options = {}) {
+  getData(options:any = {}) {
     options = super.getData(options);
-    options.pos = game.settings.get(constants.moduleName, this.positionSetting);
+    options.pos = game.settings.get(MODULE_NAME, this.positionSetting);
 
     return options;
   }
@@ -86,6 +86,6 @@ export default class RepositionableApplication extends Application {
   }
 
   async savePosition(pos = {top: 400, left: 120}) {
-    if (pos.top && pos.left) return game.settings.set(constants.moduleName, this.positionSetting, pos);
+    if (pos.top && pos.left) return game.settings.set(MODULE_NAME, this.positionSetting, pos);
   }
 }
